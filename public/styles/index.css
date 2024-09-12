@@ -1,0 +1,220 @@
+body {
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    background-image: url(../assets/luna-reach-bg.png);
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper {
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    margin: auto;
+}
+
+.logo {
+    width: clamp(300px, 30vw, 450px);
+}
+
+.rooms_wrapper {
+    display: flex;
+    gap: 3em;
+}
+
+.room {
+    width: clamp(150px, 30vw, 200px);
+    aspect-ratio: 1/1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all 360ms;
+    animation: rotate 100s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    
+}
+
+.c_room{
+    background: linear-gradient(168deg, #202020 32.37%, #4D4D4D 91.62%);
+}
+
+.j_room {
+    background: linear-gradient(135deg, #4F4F4F 16.12%, #080606 80.28%);
+
+}
+
+.room p {
+    color: white;
+    font-weight: bold;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    border: 2px solid transparent;
+    transition: all 360ms;
+    animation: antirotate 100s linear infinite;
+}
+
+@keyframes antirotate {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+    
+}
+
+.room .c_p{
+    background: linear-gradient(90deg, #aeaef6 0%, #ebd7fb 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.room .j_p{
+    background: linear-gradient(90deg, #b4edea 0%, #d8f4fb 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.c_room:hover{
+    background: radial-gradient(circle, #6e6ed1 0%, #a06ccb 100%);
+}
+
+.c_room:hover .c_p{
+    color: white;
+    -webkit-text-fill-color: unset;
+}
+
+.j_room:hover{
+    background: radial-gradient(circle, #569a95 0%, #5087ad 100%);
+}
+
+.j_room:hover .j_p{
+    color: white;
+    -webkit-text-fill-color: unset;
+}
+
+dialog[open]{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.975);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+dialog form{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 1em;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-fields input {
+    margin-bottom: 4em;
+}
+
+.dialog_ask-name{
+    color: #f4acff;
+    font-size: clamp(1.5rem, 7vw, 3rem);
+    font-weight: bold;
+    margin-bottom: 2em;
+}
+
+dialog input{
+    position: relative;
+    border: none;
+    border-bottom: 3px solid #858181;
+    background-color: transparent;
+    width: 100%;
+    height: 30px;
+    padding: 1em 0.5em ;
+    outline: none;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.cc-input:focus{
+    border-bottom: 3px solid #f4acff;
+}
+
+.dialog_error_msg:empty{
+    display: none;
+}
+
+.dialog_error_msg {
+    color: rgb(255, 99, 99);
+    font-size: 0.75rem;
+}
+
+.cr_submit_btn{
+    display: flex;
+    background-color: transparent;
+    width: max-content;
+    margin-left: auto;
+    border: none;
+    color: #858181;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75em;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.cr_submit_btn:hover {
+    color: #afdbff;
+    cursor: pointer;
+}
+
+.cr_submit_btn:hover path{
+    fill: #afdbff;
+}
+
+.dialog-jc {
+    color: #68a9ea;
+    font-size: clamp(1.5rem, 7vw, 3rem);
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.jc-input:focus{
+    border-bottom: 3px solid #68a9ea;
+}
+
+.dialog-close-btn{
+    position: absolute;
+    top: 1.35em;
+    right: 1.35em;
+    cursor: pointer;
+}
+
+.dialog-close-btn:hover path{
+    fill: #FCA1A1;
+}
