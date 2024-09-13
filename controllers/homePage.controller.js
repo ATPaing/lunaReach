@@ -7,3 +7,4 @@ const __dirname = path.dirname(__filename);
 export const homePageController = (req, res) => {
     res.sendFile(path.join(__dirname, "../public/pages/index.html"));
 };
+

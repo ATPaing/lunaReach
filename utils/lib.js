@@ -1,13 +1,19 @@
-export function generateRoomCode() {
-    const characters =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let roomCode = "";
+import Room from '../../models/room.mode.js';
 
-    for (let i = 0; i < 10; i++) {
-        const randomIndex = Math.floor(Math.random() * characters.length);
-        roomCode += characters[randomIndex];
+
+
+
+export async function checkRoomCode(roomCode) {
+    try {
+        const room = await Room.findOne({ classCode })
+        
+        if (room) {
+            console.log('Class code already exists');
+            return false;
+        }
+        console.log('Class code does not exist');
+        return true;
+    } catch (err) {
+        console.error(err);
     }
-
-    return roomCode;
 }
-

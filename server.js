@@ -1,22 +1,26 @@
 import express from "express";
 import mongoose from "mongoose";
+import cookieParser from 'cookie-parser';
 
 import indexRoute from "./routes/index.route.js";
+import roomRoute from "./routes/createRoom.route.js";
+import cookieRoute from "./routes/cookie.route.js";
 
 const port = 3000;
 const app = express();
 
-const dbUrl = "mongodb://localhost:27017/lunaReach/mainDB";
+const dbUrl = "mongodb://localhost:27017/mainDB";
 
 // middlwares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.static("public"));
 
 // routes
-app.get("/", indexRoute);
-
-
+app.use("/", indexRoute);
+app.use("/room", roomRoute);
+app.use("/cookie", cookieRoute);
 
 app.listen(port, async () => {
     console.log(`Server is running on port ${port}`);
