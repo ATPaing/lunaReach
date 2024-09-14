@@ -6,6 +6,8 @@ import indexRoute from "./routes/index.route.js";
 import roomRoute from "./routes/createRoom.route.js";
 import cookieRoute from "./routes/cookie.route.js";
 
+import {hostCreatedRoomController} from './controllers/createRoom.controller.js';
+
 const port = 3000;
 const app = express();
 

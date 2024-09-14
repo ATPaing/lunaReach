@@ -7,12 +7,12 @@ const dialogEl = document.querySelector('dialog');
 
 let cookie = null;
 
-document.addEventListener('DOMContentLoaded', async () => {
-    const res = await fetch('/cookie/check');
-    const data = await res.json();
-    cookie = data
-    console.log(data)
-});
+// document.addEventListener('DOMContentLoaded', async () => {
+//     const res = await fetch('/cookie/check');
+//     const data = await res.json();
+//     cookie = data
+//     console.log(data)
+// });
 
 createRoomBtn.addEventListener('click', () => {
 
@@ -46,8 +46,6 @@ createRoomBtn.addEventListener('click', () => {
     form.insertAdjacentHTML('afterbegin', formHTMLContent);
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        console.log(e.target)
-        // generate class code
         const roomCode = generateRoomCode();
         const name = form.name.value;
         if (name.trim() === "") {
@@ -58,16 +56,21 @@ createRoomBtn.addEventListener('click', () => {
         } else if (name.trim()) {
             const errorMsgEl = document.querySelector('.dialog_error_msg');
             errorMsgEl.textContent = "";
-            const res = await fetch('/room/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({name, roomCode})
-            });
 
-            const data = await res.json();
-            console.log(data)
+            try {
+                const res = await fetch('/room/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({name, roomCode})
+                });
+                const data = await res.json();
+                window.location.href = `/room/built?rc=${data.roomCode}`;
+            } catch (error) {
+                console.error(error);
+            }
+
         }
     });
     dialogEl.show();
